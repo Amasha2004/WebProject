@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jingdezhen Ceramic University - Campus Showcase</title>
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="css/swiper.min.css">
+  <link rel="stylesheet" href="./css/style.css" />
+  <!-- Custom Styles -->
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Microsoft YaHei", sans-serif;
+    }
+    
+    body {
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    /* Header Navigation */
+    header {
+      background: linear-gradient(180deg, rgba(0, 63, 136, 0.8), rgba(78, 184, 229, 0.41));
+      color: white;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    
+    nav ul li {
+      margin-left: 25px;
+	  position: relative;
+    }
+    
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s;
+      font-size: 16px;
+	  padding: 5px 0;
+	  border-radius: 4px;
+	  display: block;
+	  border: 1px solid transparent;
+    }
+    
+    nav ul li a:hover {
+       background-color: rgba(225, 225, 225, 0.1);
+       border-color: rgba(255, 255, 255, 0.3);
+       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+       transform: translateY(-2px);
+    }
+	
+	nav ul li a.active {
+	   background-color: rgba(78, 184, 229, 0.3);
+	   border-color: rgba(78, 184, 229, 0.6);
+	   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+	   transform: translateY(-2px);
+	   font-weight: 500;
+	}
+
+    .user-actions {
+      display: flex;
+      align-items: center;
+    }
+    
+    .user-actions img {
+      height: 30px;
+      margin-left: 15px;
+      cursor: pointer;
+    }
+	.swiper-pagination-bullet {
+	      background-color: rgba(255, 255, 255, 0.6);
+	      transition: all 0.2s;
+	    }
+	    
+	    .swiper-pagination-bullet-active {
+	      background-color: white;
+	      width: 30px;
+	      border-radius: 15px;
+	    }
+    
+    
+    /* Main Content Area */
+    .main-content {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+      position: relative;
+    }
+    
+    .section-title h2 {
+      font-size: 32px;
+      color: #004080;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+    
+    .section-title h2::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: #4eb8e5;
+    }
+    
+    /* Card Layout */
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+    }
+    
+    .card {
+      flex: 1 1 calc(33% - 20px);
+      background-color: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-image {
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    
+    .card:hover .card-image img {
+      transform: scale(1.1);
+    }
+    
+    .card-content {
+      padding: 20px;
+    }
+    
+    .card-content h3 {
+      font-size: 20px;
+      color: #004080;
+      margin-bottom: 10px;
+    }
+    
+    .card-content p {
+      color: #666;
+      margin-bottom: 15px;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+    
+    .card-content a {
+      display: inline-block;
+      color: #007bff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    .card-content a:hover {
+      color: #0056b3;
+    }
+    
+    /* Footer Styles */
+    footer {
+      background-color: #004080;
+      color: white;
+      padding: 40px 0 20px;
+      margin-top: 60px;
+    }
+    
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    
+    .footer-column {
+      flex: 1 1 calc(25% - 20px);
+      margin-bottom: 30px;
+    }
+    
+    .footer-column h3 {
+      font-size: 18px;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-column h3::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background-color: #4eb8e5;
+    }
+    
+    .footer-column ul {
+      list-style: none;
+    }
+    
+    .footer-column ul li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-column ul li a {
+      color: #e6f7ff;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-column ul li a:hover {
+      color: white;
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      margin-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 14px;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .card {
+        flex: 1 1 calc(50% - 20px);
+      }
+      
+      .footer-column {
+        flex: 1 1 calc(50% - 20px);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .swiper-container {
+        height: 400px;
+      }
+      
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      nav ul {
+        margin-top: 15px;
+      }
+      
+      nav ul li {
+        margin: 0 15px;
+      }
+      
+      .card {
+        flex: 1 1 100%;
+      }
+      
+      .footer-column {
+        flex: 1 1 100%;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .swiper-container {
+        height: 300px;
+      }
+      
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      nav ul li {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Navigation -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <img src="./images/logo.svg" alt="Jingdezhen Ceramic University Logo">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#" class="active">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Education & Research</a></li>
+          <li><a href="#">Global</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Discover JCU</a></li>
+          <li><a href="#">News</a></li>
+        </ul>
+      </nav>
+      <div class="user-actions">
+        <img src="./images/user-white.png" alt="User">
+        <img src="./images/search.png" alt="Search">
+      </div>
+    </div>
+  </header>
+
+  <!-- Carousel Section -->
+<div class="swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide swiper-lazy" data-background="images/img1.jpg" data-theme="gray">
+				<a href="javascript:"></a>
+			</div>
+			<div class="swiper-slide swiper-lazy" data-background="images/img2.jpg" data-theme="gray">
+				<a href="javascript:"></a>
+			</div>
+			<div class="swiper-slide swiper-lazy" data-background="images/img3.jpg" data-theme="white">
+				<a href="javascript:"></a>
+			</div>
+			<div class="swiper-slide swiper-lazy" data-background="images/img4.jpg" data-theme="gray">
+				<a href="javascript:"></a>
+			</div>
+			<div class="swiper-slide swiper-lazy" data-background="images/img5.jpg" data-theme="white">
+				<a href="javascript:"></a>
+			</div>
+			<div class="swiper-slide swiper-lazy" data-background="images/img6.jpg" data-theme="white">
+				<a href="javascript:"></a>
+			</div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <!-- Main Content Area -->
+  <div class="main-content">
+    <section class="about-section">
+      <div class="section-title">
+        <h2>About JCU</h2>
+      </div>
+      <div class="card-container">
+        <div class="card">
+          <div class="card-image">
+            <img src="images/img1.jpg" alt="Jingdezhen Ceramic University">
+          </div>
+          <div class="card-content">
+            <h3>University Profile</h3>
+            <p>Jingdezhen Ceramic University is the only multi-disciplinary university in China featuring ceramic culture and art. Founded in 1958, it is known as the "Huangpu of Ceramics."</p>
+            <a href="#">Learn More</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image">
+            <img src="images/img3.jpg" alt="Campus Scenery">
+          </div>
+          <div class="card-content">
+            <h3>Campus Environment</h3>
+            <p>Covering an area of over 2,000 mu, the campus combines traditional ceramic culture with modern design concepts, creating an ideal environment for study and research.</p>
+            <a href="#">Learn More</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image">
+            <img src="images/img4.jpg" alt="Ceramic Art Museum">
+          </div>
+          <div class="card-content">
+            <h3>Academic Research</h3>
+            <p>The university has established multiple national research platforms, making significant achievements in ceramic materials, art design, and promoting innovation in the ceramic industry.</p>
+            <a href="#">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="news-section">
+      <div class="section-title">
+        <h2>Campus News</h2>
+      </div>
+      <div class="card-container">
+        <div class="card">
+          <div class="card-image">
+            <img src="images/img5.jpg" alt="Campus Activity">
+          </div>
+          <div class="card-content">
+            <h3>Autumn Cultural Festival</h3>
+            <p>The 2024 Autumn Campus Cultural Festival was successfully held, featuring art exhibitions, academic lectures, and cultural performances, attracting numerous faculty and students.</p>
+            <a href="#">Read More</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image">
+            <img src="images/img6.jpg" alt="Academic Conference">
+          </div>
+          <div class="card-content">
+            <h3>International Ceramic Conference</h3>
+            <p>The 10th International Ceramic Academic Symposium was convened at JCU, gathering experts and scholars from more than 20 countries to discuss global ceramic development.</p>
+            <a href="#">Read More</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image">
+            <img src="images/img2.jpg" alt="Student Works">
+          </div>
+          <div class="card-content">
+            <h3>Student Art Exhibition</h3>
+            <p>The Graduation Exhibition of the School of Art Design displayed hundreds of outstanding works, showcasing students' innovative thinking and professional capabilities.</p>
+            <a href="#">Read More</a>
+          </div>
+		        <!-- Card content remains -->
+		      </section>
+      <section class="experience-section">
+        <div class="section-title">
+          <h2>Experience in JCU</h2>
+        </div>
+        <div class="card-container">
+          <div class="card">
+            <div class="card-image">
+              <img src="./images/img-06.png" alt="Multimedia">
+            </div>
+            <div class="card-content">
+              <h3>Multimedia</h3>
+              <p>JCU experience expands beyond the classroom.</p>
+              <a href="#">Explore</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-image">
+              <img src="./images/img-07.png" alt="better future">
+            </div>
+            <div class="card-content">
+              <h3>For a better future</h3>
+              <p>Step up our efforts to support the SDGs.</p>
+              <a href="#">Explore</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-image">
+              <img src="./images/img-08.png" alt="Jingdezhen">
+            </div>
+            <div class="card-content">
+              <h3>Jingdezhen</h3>
+              <p>A city with glorious culture, entrepreneurial spirit and a dynamic landscape</p>
+              <a href="#">Explore </a>
+          </div>
+        </div>
+      </section>
+    </div>
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>University</h3>
+        <ul>
+          <li><a href="#">University Profile</a></li>
+          <li><a href="#">Leadership</a></li>
+          <li><a href="#">History</a></li>
+          <li><a href="#">Campus Tour</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Academics</h3>
+        <ul>
+          <li><a href="#">Schools & Departments</a></li>
+          <li><a href="#">Faculty</a></li>
+          <li><a href="#">Programs</a></li>
+          <li><a href="#">Research Platforms</a></li>
+          <li><a href="#">Academic Journals</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Admissions & Careers</h3>
+        <ul>
+          <li><a href="#">Undergraduate Admissions</a></li>
+          <li><a href="#">Graduate Admissions</a></li>
+          <li><a href="#">Continuing Education</a></li>
+          <li><a href="#">Career Services</a></li>
+          <li><a href="#">Alumni</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Campus Services</h3>
+        <ul>
+          <li><a href="#">Library</a></li>
+          <li><a href="#">Gymnasium</a></li>
+          <li><a href="#">Campus Hospital</a></li>
+          <li><a href="#">Logistics Services</a></li>
+          <li><a href="#">Campus Map</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Jingdezhen Ceramic University. All rights reserved. | Address: No.27 Taoyang South Road, Jingdezhen, Jiangxi | Postcode: 333403</p>
+	  <p>Made by 一诺</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+ <script src="js/jquery.min.js"></script>
+ <script src="js/swiper.min.js"></script>
+ <script src="js/script.js"></script>
+
+</body>
+</html>
